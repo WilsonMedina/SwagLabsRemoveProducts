@@ -40,7 +40,7 @@ class PlpAndPdp {
         return this.element.getNameProduct().then(allNames => {
             for (let i = 0; i < numProductoToDelete; i++) {
                 let randomNum = Math.floor(Math.random() * arrayNames.length)
-                cy.wrap(allNames).contains(arrayNames[randomNum]).parents('[class$="description"]').find('button').click({ multiple: true })
+                cy.wrap(allNames).contains(arrayNames[randomNum]).parents('[class$="description"]').find('button').click()
                 newArrayNames.push(arrayNames.splice(randomNum, 1))  
             }
         }).then(() => {
@@ -53,7 +53,7 @@ class PlpAndPdp {
         return this.element.getListProducts().then(() => {
             for (let i = 0; i < numProductoToDelete; i++) {
                 let randomNum = Math.floor(Math.random() * arrayNames.length)
-                this.element.getNameProduct().contains(arrayNames[randomNum]).click({ multiple: true })
+                this.element.getNameProduct().contains(arrayNames[randomNum]).click()
                 this.element.buttonRemove().last().click()
                 this.element.buttonBackTo().click()
                 newArrayNames.push(arrayNames.splice(randomNum, 1))  
